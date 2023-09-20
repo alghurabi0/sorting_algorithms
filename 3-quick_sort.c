@@ -15,6 +15,7 @@ void quick_sort(int *array, size_t size)
  * @array: array to sort
  * @lb: size of the array
  * @ub: upper bound
+ * @size: size
  */
 void quick_sort_a(int *array, int lb, int ub, size_t size)
 {
@@ -32,6 +33,7 @@ void quick_sort_a(int *array, int lb, int ub, size_t size)
  * @array: array
  * @lb: lb
  * @ub: ub
+ * @size: size
  * Return: int
  */
 int partition(int *array, int lb, int ub, size_t size)
@@ -62,5 +64,6 @@ int partition(int *array, int lb, int ub, size_t size)
 	temp = array[lb];
 	array[lb] = array[end];
 	array[end] = temp;
+	print_array(array, size);
 	return (end);
 }
