@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <math.h>
 /**
  * shell_sort - shell sort algorithm
  * @array: array to sort
@@ -6,23 +7,24 @@
  */
 void shell_sort(int *array, size_t size)
 {
-	int gap, k, i, j, h;
+	int gap, k, i, j, h, my_size;
 
 	gap = 1;
 	k = 1;
-	while (gap > 0 && gap <= size)
+	my_size = size;
+	while (gap > 0 && gap <= my_size)
 	{
-		gap = 3 ^ k - 1;
+		gap = pow(3, k) - 1;
 		j = gap;
 		i = 0;
-		while (j < size)
+		while (j < my_size)
 		{
 			if (array[i] > array[j])
 			{
 				swap(array, i, j);
 				print_array(array, size);
 				h = i - gap;
-				while (h => 0)
+				while (h >= 0)
 				{
 					if (array[i] < array[h])
 					{
@@ -41,7 +43,7 @@ void shell_sort(int *array, size_t size)
 			}
 		}
 		h = i - gap;
-		while (h => 0)
+		while (h >= 0)
                 {
 			if (array[i] < array[h])
 			{
