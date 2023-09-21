@@ -13,7 +13,7 @@ void radix_sort(int *array, size_t size)
 	for (i = 1; i < size; i++)
 	{
 		if (countDigits(array[i]) > biggestCount)
-				biggestCount = countDigits(array[i]);
+			biggestCount = countDigits(array[i]);
 	}
 	helper(array, size, 0, biggestCount);
 }
@@ -42,6 +42,10 @@ int helper(int *array, size_t size, int times, int count)
 		n = 1000;
 	else if (times == 4)
 		n = 10000;
+	else if (times == 5)
+		n = 100000;
+	else if (times == 6)
+		n = 1000000
 	arr = malloc(sizeof(int) * size);
 	for (i = 0; i < size; i++)
 		arr[i] = array[i];
@@ -58,7 +62,7 @@ int helper(int *array, size_t size, int times, int count)
 	}
 	free(arr);
 	print_array(array, size);
-	return (helper(array, size, times++, count));
+	return (helper(array, size, ++times, count));
 }
 /**
  * countDigits - counts digits in an integer
@@ -68,6 +72,7 @@ int helper(int *array, size_t size, int times, int count)
 int countDigits(int number)
 {
 	int count = 0;
+
 	if (number == 0)
 		return (1);
 	if (number < 0)
