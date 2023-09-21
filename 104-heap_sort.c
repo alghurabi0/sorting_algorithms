@@ -52,8 +52,8 @@ void heapify(int *array, int n, int i, size_t size)
 	{
 		swap(array, i, max);
 		print_array(array, size);
+		heapify(array, n, max, size);
 	}
-	heapify(array, n, max, size);
 }
 /**
  * swap - swap two elements in an array
