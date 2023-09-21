@@ -6,7 +6,7 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	int biggest, i, j, count, *counts, my_size = (int)size;
+	int biggest, i, j, count, *counts, arr, my_size = (int)size;
 	int *res = malloc(sizeof(int) * size);
 	size_t my_arr;
 
@@ -16,9 +16,10 @@ void counting_sort(int *array, size_t size)
 		if (array[i] > biggest)
 			biggest = array[i];
 	}
-	counts = malloc(sizeof(int) * (biggest + 1));
-	my_arr = biggest + 1;;
-	for (i = 0; i < biggest + 1; i++)
+	arr = biggest + 1;
+	counts = malloc(sizeof(int) * arr);
+	my_arr = arr;
+	for (i = 0; i < arr; i++)
 		counts[i] = 0;
 	for (i = 0; i < my_size; i++)
 	{
