@@ -34,4 +34,7 @@ void swap(int *array, int i, int j);
 void counting_sort(int *array, size_t size);
 void merge_sort(int *array, size_t size);
 void merge(int *leftArr, int *rightArr, int *array, size_t size, int middle);
+void heap_sort(int *array, size_t size);
+void setupHeap(int *array, int n, size_t size);
+void heapify(int *array, int n, int i, size_t size);
 #endif
