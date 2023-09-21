@@ -6,10 +6,11 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	int biggest, i, j, count, *counts, arr, my_size = (int)size;
+	int biggest, i, j, count, *counts, arr, my_size;
 	int *res = malloc(sizeof(int) * size);
 	size_t my_arr;
 
+	my_size = (int)size;
 	biggest = array[0];
 	for (i = 0; i < my_size; i++)
 	{
