@@ -11,9 +11,7 @@ void merge_sort(int *array, size_t size)
 
 	if (size <= 1)
 		return;
-	printf("dividing size: %ld \n", size);
 	middle = size / 2;
-	printf("middle: %d\n", middle);
 	leftArr = malloc(sizeof(int) * middle);
 	rightArr = malloc(sizeof(int) * (size - middle));
 	for (i = 0; i < (int)size; i++)
@@ -44,12 +42,26 @@ void merge_sort(int *array, size_t size)
  */
 void merge(int *leftArr, int *rightArr, int *array, size_t size, int middle)
 {
-	int i = 0, r = 0, l = 0, rSize;
+	int i = 0, r = 0, l = 0, rSize, n;
 
 	rSize = size - middle;
 	printf("Merging...\n");
-	printf("left: %d\n", *leftArr);
-	printf("right: %d\n", *rightArr);
+	printf("[left]: ");
+	for (n = 0; n < middle; n++)
+	{
+		if (n == middle - 1)
+			printf("%d\n", leftArr[n]);
+		else
+			printf("%d, ", leftArr[n]);
+	}
+	printf("[right]: ");
+	for (n = 0; n < rSize; n++)
+	{
+		if (n == rSize - 1)
+			printf("%d\n", rightArr[n]);
+		else
+			printf("%d, ", rightArr[n]);
+	}
 	while (l < middle && r < rSize)
 	{
 		if (leftArr[l] < rightArr[r])
@@ -77,5 +89,12 @@ void merge(int *leftArr, int *rightArr, int *array, size_t size, int middle)
 		i++;
 		r++;
 	}
-	printf("Done");
+	printf("[Done]: ");
+	for (n = 0; n < (int)size; n++)
+	{
+		if (n == (int)size - 1)
+			printf("%d\n", array[n]);
+		else
+			printf("%d, ", array[n]);
+	}
 }
