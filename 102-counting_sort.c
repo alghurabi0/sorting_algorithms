@@ -6,41 +6,42 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	int biggest, i, j, count, *counts, arr, my_size;
-	int *res = malloc(sizeof(int) * size);
+	int biggest, i, count;
+	int *res, *counts;
 	size_t my_arr;
 
-	my_size = (int)size;
+	if (size < 2)
+		return;
 	biggest = array[0];
-	for (i = 0; i < my_size; i++)
+	for (i = 1; i < (int)size; i++)
 	{
 		if (array[i] > biggest)
 			biggest = array[i];
 	}
-	arr = biggest + 1;
-	counts = malloc(sizeof(int) * arr);
-	my_arr = arr;
-	for (i = 0; i < arr; i++)
-		counts[i] = 0;
-	for (i = 0; i < my_size; i++)
+	my_arr = biggest + 1;
+	counts = malloc(sizeof(int) * (biggest + 1));
+	if (!counts)
+		return;
+	res = malloc(sizeof(int) * size);
+	if (!res)
 	{
-		count = 1;
-		for (j = 0; j < my_size; j++)
-		{
-			if (array[j] == array[i] && i != j)
-				count++;
-		}
-		counts[array[i]] = count;
+		free(counts);
+		return;
 	}
+	for (i = 0; i <= biggest; i++)
+		counts[i] = 0;
+	for (i = 0; i < (int)size; i++)
+		counts[array[i]]++;
 	for (i = 1; i <= biggest; i++)
-		counts[i] = counts[i] + counts[i - 1];
-	for (i = 0; i < my_size; i++)
+		counts[i] += counts[i - 1];
+	for (i = (int)size - 1; i >= 0; i--)
 	{
-		res[counts[array[i]]] = array[i];
-		counts[array[i]] -= 1;
+		count = array[i];
+		res[counts[count] - 1] = count;
+		counts[count]--;
 	}
 	print_array(counts, my_arr);
-	for (i = 0; i < my_size; i++)
+	for (i = 0; i < (int)size; i++)
 		array[i] = res[i];
 	free(res);
 	free(counts);
