@@ -40,4 +40,5 @@ void heapify(int *array, int n, int i, size_t size);
 int helper(int *array, size_t size, int times, int count);
 void radix_sort(int *array, size_t size);
 int countDigits(int number);
+void quick_sort_hoare(int *array, size_t size);
 #endif
