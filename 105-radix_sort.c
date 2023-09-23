@@ -9,6 +9,11 @@ void radix_sort(int *array, size_t size)
 	size_t i;
 	int biggestCount;
 
+	if (array == NULL)
+		return;
+	else if (size < 2)
+		return;
+
 	biggestCount = countDigits(array[0]);
 	for (i = 1; i < size; i++)
 	{
