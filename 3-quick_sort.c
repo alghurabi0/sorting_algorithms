@@ -38,32 +38,38 @@ void quick_sort_a(int *array, int lb, int ub, size_t size)
  */
 int partition(int *array, int lb, int ub, size_t size)
 {
-	int pivot = array[lb];
-	int start = lb + 1;
-	int end = ub;
-	int temp;
+	int pivot = array[ub];
+	int i = lb - 1;
+	int j;
 
-	while (start < end)
+	for (j = lb; j <= ub - 1; j++)
 	{
-		while (array[start] <= pivot)
+		if (array[j] <= pivot)
 		{
-			start++;
-		}
-		while (array[end] > pivot)
-		{
-			end--;
-		}
-		if (start < end)
-		{
-			temp = array[start];
-			array[start] = array[end];
-			array[end] = temp;
-			print_array(array, size);
+			i++;
+			swap(array, i, j);
+			if (i != j)
+				print_array(array, size);
 		}
 	}
-	temp = array[lb];
-	array[lb] = array[end];
-	array[end] = temp;
-	print_array(array, size);
-	return (end);
+
+	swap(array, i + 1, ub);
+	if (i + 1 != ub)
+		print_array(array, size);
+
+	return (i + 1);
+}
+/**
+ * swap - swap two elements in an array
+ * @array: array to swap elements in
+ * @i: index
+ * @j: index
+ */
+void swap(int *array, int i, int j)
+{
+	int temp;
+
+	temp = array[i];
+	array[i] = array[j];
+	array[j] = temp;
 }

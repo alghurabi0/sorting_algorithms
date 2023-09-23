@@ -1,12 +1,12 @@
 #include "sort.h"
 /**
- * quick_sort - quick sort algorithm in c
+ * quick_sort_hoare - quick sort algorithm in c
  * @array: array to sort
  * @size: size of the array
  */
 void quick_sort_hoare(int *array, size_t size)
 {
-	if (size == 0 || array == NULL)
+	if (size < 2 || array == NULL)
 		return;
 	quick_sort_a(array, 0, size - 1, size);
 }
@@ -38,32 +38,26 @@ void quick_sort_a(int *array, int lb, int ub, size_t size)
  */
 int partition(int *array, int lb, int ub, size_t size)
 {
-	int pivot = array[lb];
-	int start = lb + 1;
-	int end = ub;
-	int temp;
+	int pivot = array[ub];
+	int start = lb - 1;
+	int temp, j;
 
-	while (start < end)
+	for (j = lb; j <= ub - 1; j++)
 	{
-		while (array[start] <= pivot)
+		if (array[j] < pivot)
 		{
 			start++;
-		}
-		while (array[end] > pivot)
-		{
-			end--;
-		}
-		if (start < end)
-		{
 			temp = array[start];
-			array[start] = array[end];
-			array[end] = temp;
+			array[start] = array[j];
+			array[j] = temp;
+
 			print_array(array, size);
 		}
 	}
-	temp = array[lb];
-	array[lb] = array[end];
-	array[end] = temp;
-	print_array(array, size);
-	return (end);
+
+	temp = array[start + 1];
+	array[start + 1] = array[ub];
+	array[ub] = temp;
+
+	return (start + 1);
 }
