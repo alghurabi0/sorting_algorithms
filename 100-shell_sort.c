@@ -8,6 +8,11 @@ void shell_sort(int *array, size_t size)
 {
 	int gap, i, j, my_size, temp;
 
+	if (array == NULL)
+		return;
+	else if (size < 2)
+		return;
+
 	gap = 1;
 	my_size = (int)size;
 	while (gap < my_size / 3)
@@ -23,18 +28,4 @@ void shell_sort(int *array, size_t size)
 		}
 		print_array(array, size);
 	}
-}
-/**
- * swap - swap two elements in an array
- * @array: array to swap elements in
- * @i: index
- * @j: index
- */
-void swap(int *array, int i, int j)
-{
-	int temp;
-
-	temp = array[i];
-	array[i] = array[j];
-	array[j] = temp;
 }
