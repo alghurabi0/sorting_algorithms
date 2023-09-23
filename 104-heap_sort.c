@@ -8,6 +8,11 @@ void heap_sort(int *array, size_t size)
 {
 	int n, i, original;
 
+	if (array == NULL)
+		return;
+	else if (size < 2)
+		return;
+
 	n = (int)size;
 	setupHeap(array, n, size);
 	for (i = n - 1; i >= 0; i--)
