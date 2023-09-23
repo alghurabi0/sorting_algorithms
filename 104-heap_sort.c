@@ -36,6 +36,10 @@ void setupHeap(int *array, int n, size_t size)
 {
 	int i;
 
+	if (array == NULL)
+		return;
+	else if (size < 2)
+		return;
 	for (i = n / 2 - 1; i >= 0; i--)
 		heapify(array, n, i, size);
 }
@@ -50,6 +54,10 @@ void heapify(int *array, int n, int i, size_t size)
 {
 	int l, r, max;
 
+	if (array == NULL)
+		return;
+	else if (size < 2)
+		return;
 	l = 2 * i + 1;
 	r = 2 * i + 2;
 	max = i;
