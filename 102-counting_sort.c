@@ -6,13 +6,14 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	int biggest, i, count;
+	int biggest = array[0], i, count;
 	int *res, *counts;
 	size_t my_arr;
 
-	if (size < 2)
+	if (array == NULL)
 		return;
-	biggest = array[0];
+	else if (size < 2)
+		return;
 	for (i = 1; i < (int)size; i++)
 	{
 		if (array[i] > biggest)
