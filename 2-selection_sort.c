@@ -6,8 +6,13 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, divider;
-	int idx, temp;
+	size_t i, divider, idx;
+	int temp;
+
+	if (array == NULL)
+		return;
+	else if (size < 2)
+		return;
 
 	idx = 0;
 	divider = 0;
@@ -19,6 +24,12 @@ void selection_sort(int *array, size_t size)
 			{
 				idx = i;
 			}
+		}
+		if (divider == idx)
+		{
+			divider += 1;
+			idx = divider;
+			continue;
 		}
 		temp = array[divider];
 		array[divider] = array[idx];
