@@ -45,7 +45,7 @@ int helper(int *array, size_t size, int times, int count)
 	else if (times == 5)
 		n = 100000;
 	else if (times == 6)
-		n = 1000000
+		n = 1000000;
 	arr = malloc(sizeof(int) * size);
 	for (i = 0; i < size; i++)
 		arr[i] = array[i];
