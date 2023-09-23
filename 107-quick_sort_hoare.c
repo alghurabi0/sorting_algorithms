@@ -50,14 +50,16 @@ int partition(int *array, int lb, int ub, size_t size)
 			temp = array[start];
 			array[start] = array[j];
 			array[j] = temp;
-
-			print_array(array, size);
+			if (start != j)
+				print_array(array, size);
 		}
 	}
 
 	temp = array[start + 1];
 	array[start + 1] = array[ub];
 	array[ub] = temp;
+	if (start + 1 != ub)
+		print_array(array, size);
 
 	return (start + 1);
 }
