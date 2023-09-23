@@ -6,14 +6,18 @@
  */
 void heap_sort(int *array, size_t size)
 {
-	int n, i;
+	int n, i, original;
 
 	n = (int)size;
 	setupHeap(array, n, size);
 	for (i = n - 1; i >= 0; i--)
 	{
+		original = array[0];
 		swap(array, 0, i);
-		print_array(array, size);
+		if (array[0] != original)
+		{
+			print_array(array, size);
+		}
 		heapify(array, i, 0, size);
 	}
 }
